@@ -1,0 +1,100 @@
+<mvc:View
+    controllerName="sap.ui.demo.walkthrough.view.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+    <Shell> 
+    <App>
+        <pages>
+            <Page title="STUDENT CRUD OPERATIONS">
+                <content>
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <!--ADD STUDENT BUTTON-->
+                        <Button
+                            type="Accept"
+                            text="Add Student"
+                            press="onOpenDialog"
+                            icon="sap-icon://add"/>
+                    </Toolbar>
+                    <!--STUDENT TABLE-->
+	                <Table
+		                id="Students"
+		                class="sapUiResponsiveMargin"
+		                width="auto"
+                        items="{/students}" >
+		                <!--STUDENT TABLE COLUMNS-->
+                        <columns>
+			                <Column>
+				                <Text text="Name"/>
+                            </Column>
+                            
+			                <Column>
+				                <Text text="Gender"/>
+                            </Column>
+                            
+			                <Column>
+				                <Text text="Date Of Birth"/>
+                            </Column>
+                            
+			                <Column>
+				                <Text text="Father Name"/>
+                            </Column>
+                            
+			                <Column>
+				                <Text text="Contact Number"/>
+                            </Column>
+
+                            <Column
+                                hAlign="End">
+                                <Text text="Action"/>
+                            </Column>
+		                </columns>
+		                <items>
+			                <ColumnListItem>
+                                <!--STUDENT TABLE CELLS-->
+				                <cells>
+					                <ObjectIdentifier title="{firstName}" />
+
+					                <Text text="{genderText}"/>
+
+                                    <Text text="{dateOfBirth}"/>
+
+                                    <Text text="{fatherName}"/>
+
+                                    <Text  text="{contactNumber}"/>
+                                    <!--STUDENT EDIT AND DELETE BUTTONS-->
+                                    <HBox justifyContent="End">
+                                        <Button
+                                            icon="sap-icon://edit" press="onEdit"/>
+
+                                        <Button
+                                            icon="sap-icon://delete" press="onDelete"/>
+						            </HBox>
+					            </cells>
+			                </ColumnListItem>
+		                </items>
+	                </Table>
+                </content>
+                <footer>
+                    <!--MESSAGE MANAGER BUTTONS-->
+                    <Toolbar
+                        id="otbFooter">
+                        <Button
+                            icon="sap-icon://alert"
+                            text="{= ${message>/}.length }"
+                            type="Emphasized"
+                            visible="{= ${message>/}.length > 0 }"
+                            press="onMessagePopoverPress"/>
+                            
+                        <Button
+                            visible="{= ${message>/}.length > 0 }"
+                            text="Clear" press="onClearPress"/>
+                            
+                    </Toolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+    </Shell>
+</mvc:View>
